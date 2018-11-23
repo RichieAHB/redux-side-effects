@@ -1,44 +1,13 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Redux Side Effects
+This repo uses two different redux middlewares, `redux-saga` and `redux-loop`, for handling a type of side effect that I couldn't seem to model nicely using `redux-thunk`.
 
-## Available Scripts
+The goal was to be able to dispatch an action that, if some condition (internal to that action) was met, would trigger this display of a modal that asks the user to confirm whether they wanted to proceed with that action. Only if they confirmed via the modal would that action actually be carried out.
 
-In the project directory, you can run:
+An aim here might be to create an abstraction that would handle the asynchrony of a modal confirmation for *any* action / condition pairing. I haven't done that here as it obscured the main aim of this repo which was to highlight the differences between the two libraries in their most basic form.
 
-### `npm start`
+## Findings
+Its worth noting that with the right modelling you can keep a lot of constants between the two libraries and swapping between the two in this basic case is pretty easy. The initialising of the two libraries with redux is just middleware / store enhancers, which can be seen in `index.ts`. Aside from that, the buesiness logic is handles in either a reducer (`redux-loop`) or a root generator (`redux-saga`) and glancing at the two you can see similarities.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Given I wanted the decision for whether to show the modal to be encapsulated within the action (not passed in to the action creator), this required accessing the global state and using a selector to determine whether that condition was met. In `redux-saga` this was very easy as there is a primitive to do this `select`. In `redux-loop` it was relatively easy using `reduceReducers` and was only complicated by the (admittedly correct) TS typings for the inital state of the side effecting reducer - there is a comment in the code that links to a further explanation.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+While on the subject of TS typings, `redux-saga` suffers relatively badly from the fact that TS doesn't currently support the typing of `yield` returns in generators, so these values are always `any`. With more complex logic this could be pretty painful. On the other hand this isn't an issue for `redux-loop`.
