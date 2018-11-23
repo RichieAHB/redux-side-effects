@@ -1,12 +1,14 @@
 # Redux Side Effects
 
+Try it out at [https://richieahb.github.io/redux-side-effects/](https://richieahb.github.io/redux-side-effects/)
+
 This repo uses two different redux middlewares, `redux-saga` and `redux-loop`, for handling a type of side effect that I couldn't seem to model nicely using `redux-thunk`.
 
 The goal was to be able to dispatch an action that, if some condition (internal to that action) was met, would trigger this display of a modal that asks the user to confirm whether they wanted to proceed with that action. Only if they confirmed via the modal would that action actually be carried out.
 
 An aim here might be to create an abstraction that would handle the asynchrony of a modal confirmation for _any_ action / condition pairing. I haven't done that here as it obscured the main aim of this repo which was to highlight the differences between the two libraries in their most basic form.
 
-## Running
+## Running locally
 
 This was built with create-react-app so in order to run the app you just need to `yarn start` from the root directory (not that it's a very exciting app).
 
