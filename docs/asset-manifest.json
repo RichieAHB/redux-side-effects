@@ -1,11 +1,11 @@
 {
-  "main.js": "/static/js/main.bbd8041b.chunk.js",
-  "main.js.map": "/static/js/main.bbd8041b.chunk.js.map",
-  "static/js/1.66749778.chunk.js": "/static/js/1.66749778.chunk.js",
-  "static/js/1.66749778.chunk.js.map": "/static/js/1.66749778.chunk.js.map",
-  "runtime~main.js": "/static/js/runtime~main.229c360f.js",
-  "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
-  "index.html": "/index.html",
-  "precache-manifest.64227c06f24f6c4271c3cf79099259b2.js": "/precache-manifest.64227c06f24f6c4271c3cf79099259b2.js",
-  "service-worker.js": "/service-worker.js"
+  "main.js": "/redux-side-effects/static/js/main.bbd8041b.chunk.js",
+  "main.js.map": "/redux-side-effects/static/js/main.bbd8041b.chunk.js.map",
+  "static/js/1.66749778.chunk.js": "/redux-side-effects/static/js/1.66749778.chunk.js",
+  "static/js/1.66749778.chunk.js.map": "/redux-side-effects/static/js/1.66749778.chunk.js.map",
+  "runtime~main.js": "/redux-side-effects/static/js/runtime~main.3ccafb47.js",
+  "runtime~main.js.map": "/redux-side-effects/static/js/runtime~main.3ccafb47.js.map",
+  "index.html": "/redux-side-effects/index.html",
+  "precache-manifest.6f971b432d5b5f42280b2bbb80b391f1.js": "/redux-side-effects/precache-manifest.6f971b432d5b5f42280b2bbb80b391f1.js",
+  "service-worker.js": "/redux-side-effects/service-worker.js"
 }
