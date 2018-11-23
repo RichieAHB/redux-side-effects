@@ -1,4 +1,4 @@
-import { Action, ModalType } from './types/Action';
+import { Action } from './types/Action';
 
 export const confirmIncrement = (payload: boolean): Action => ({
   type: 'CONFIRM_INCREMENT',

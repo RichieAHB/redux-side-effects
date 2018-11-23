@@ -1,4 +1,4 @@
-import { Action, ModalType } from '../types/Action';
+import { Action } from '../types/Action';
 
 type ModalState = boolean;
 

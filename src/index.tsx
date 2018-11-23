@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from 'react-modal';
 import { applyMiddleware } from 'redux';
-import createSagaMiddleware from 'redux-saga';
-import { install } from 'redux-loop';
 import ReduxRoot from './ReduxRoot';
+
+// redux-saga imports
+import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './redux-saga/sagas';
 import reducer from './reducers/root';
+
+// redux-loop imports
+import { install } from 'redux-loop';
 import loopReducer from './redux-loop/reducer';
 
 const root = document.getElementById('root');
@@ -16,14 +20,14 @@ if (root) {
   Modal.setAppElement(root);
   ReactDOM.render(
     <div>
-      {/* Test saga middleware */}
+      {/* Test redux-saga setup */}
       <ReduxRoot
         rootReducer={reducer}
         enhancer={applyMiddleware(sagaMiddlware)}
         afterCreateStore={() => sagaMiddlware.run(rootSaga)}
         title="Redux saga"
       />
-      {/* Test loop middleware */}
+      {/* Test redux-loop setup */}
       <ReduxRoot
         rootReducer={loopReducer}
         enhancer={install()}

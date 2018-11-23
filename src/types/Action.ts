@@ -11,8 +11,6 @@ export interface Increment {
   type: 'INCREMENT';
 }
 
-export type ModalType = 'CONFIRM_INCREMENT_MODAL';
-
 export interface OpenModal {
   type: 'OPEN_MODAL';
 }
