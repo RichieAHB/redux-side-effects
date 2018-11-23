@@ -15,9 +15,6 @@ export type ModalType = 'CONFIRM_INCREMENT_MODAL';
 
 export interface OpenModal {
   type: 'OPEN_MODAL';
-  payload: {
-    type: ModalType;
-  };
 }
 
 export interface CloseModal {

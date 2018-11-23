@@ -13,9 +13,8 @@ export const increment = (): Action => ({
   type: 'INCREMENT'
 });
 
-export const openModal = (type: ModalType): Action => ({
-  type: 'OPEN_MODAL',
-  payload: { type }
+export const openModal = (): Action => ({
+  type: 'OPEN_MODAL'
 });
 
 export const closeModal = (): Action => ({

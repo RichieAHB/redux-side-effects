@@ -1,14 +1,14 @@
 import { Action, ModalType } from '../types/Action';
 
-type ModalState = ModalType | null;
+type ModalState = boolean;
 
-export default (state: ModalState = null, action: Action): ModalState => {
+export default (state: ModalState = false, action: Action): ModalState => {
   switch (action.type) {
     case 'OPEN_MODAL': {
-      return action.payload.type;
+      return true;
     }
     case 'CLOSE_MODAL': {
-      return null;
+      return false;
     }
     default: {
       return state;

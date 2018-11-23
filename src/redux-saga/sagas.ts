@@ -4,7 +4,7 @@ import { closeModal, openModal, increment } from '../actions';
 
 export function* incrementWithConfirm() {
   if (selectShouldConfirmIncrement(yield select())) {
-    yield put(openModal('CONFIRM_INCREMENT_MODAL'));
+    yield put(openModal());
     // payload is `any` here
     // https://github.com/Microsoft/TypeScript/issues/2983
     // https://github.com/redux-saga/redux-saga/issues/1504

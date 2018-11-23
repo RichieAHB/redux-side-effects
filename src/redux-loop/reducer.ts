@@ -18,7 +18,7 @@ const effects = (
         state,
         Cmd.action(
           selectShouldConfirmIncrement(state)
-            ? openModal('CONFIRM_INCREMENT_MODAL')
+            ? openModal()
             : increment()
         )
       );

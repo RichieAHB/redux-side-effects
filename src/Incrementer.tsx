@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   selectShouldConfirmIncrement,
   selectCount,
-  selectOpenModal
+  selectModalOpen
 } from './selectors';
 import { State } from './reducers/root';
 import { confirmIncrement, maybeIncrement } from './actions';
@@ -11,7 +11,7 @@ import Modal from 'react-modal';
 
 interface IncrementerProps {
   increment: () => void;
-  openModal: string | null;
+  modalOpen: boolean;
   accept: () => void;
   reject: () => void;
   count: number;
@@ -20,7 +20,7 @@ interface IncrementerProps {
 
 const Incrementer = ({
   increment,
-  openModal,
+  modalOpen,
   accept,
   reject,
   count,
@@ -34,11 +34,7 @@ const Incrementer = ({
     <button onClick={increment}>
       {shouldConfirmIncrement ? 'Maybe increment' : 'Increment'}
     </button>
-    <Modal
-      isOpen={openModal === 'CONFIRM_INCREMENT_MODAL'}
-      onRequestClose={reject}
-      contentLabel="Increment?"
-    >
+    <Modal isOpen={modalOpen} onRequestClose={reject} contentLabel="Increment?">
       <h1>Increment?</h1>
       <button onClick={accept}>Accept</button>
       <button onClick={reject}>Reject</button>
@@ -48,7 +44,7 @@ const Incrementer = ({
 
 export default connect(
   (state: State) => ({
-    openModal: selectOpenModal(state),
+    modalOpen: selectModalOpen(state),
     count: selectCount(state),
     shouldConfirmIncrement: selectShouldConfirmIncrement(state)
   }),
