@@ -1,26 +1,26 @@
-interface ConfirmIncrement {
+export interface ConfirmIncrement {
   type: 'CONFIRM_INCREMENT';
   payload: boolean;
 }
 
-interface MaybeIncrement {
+export interface MaybeIncrement {
   type: 'MAYBE_INCREMENT';
 }
 
-interface Increment {
+export interface Increment {
   type: 'INCREMENT';
 }
 
 export type ModalType = 'CONFIRM_INCREMENT_MODAL';
 
-interface OpenModal {
+export interface OpenModal {
   type: 'OPEN_MODAL';
   payload: {
     type: ModalType;
   };
 }
 
-interface CloseModal {
+export interface CloseModal {
   type: 'CLOSE_MODAL';
 }
 

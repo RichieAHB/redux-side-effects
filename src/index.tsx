@@ -6,7 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import { install } from 'redux-loop';
 import ReduxRoot from './ReduxRoot';
 import { rootSaga } from './redux-saga/sagas';
-import sagaReducer from './redux-saga/reducer';
+import reducer from './reducers/root';
 import loopReducer from './redux-loop/reducer';
 
 const root = document.getElementById('root');
@@ -16,12 +16,14 @@ if (root) {
   Modal.setAppElement(root);
   ReactDOM.render(
     <div>
+      {/* Test saga middleware */}
       <ReduxRoot
-        rootReducer={sagaReducer}
+        rootReducer={reducer}
         enhancer={applyMiddleware(sagaMiddlware)}
         afterCreateStore={() => sagaMiddlware.run(rootSaga)}
         title="Redux saga"
       />
+      {/* Test loop middleware */}
       <ReduxRoot
         rootReducer={loopReducer}
         enhancer={install()}

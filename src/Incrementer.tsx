@@ -5,7 +5,7 @@ import {
   selectCount,
   selectOpenModal
 } from './selectors';
-import { State } from './types/State';
+import { State } from './reducers/root';
 import { confirmIncrement, maybeIncrement } from './actions';
 import Modal from 'react-modal';
 
